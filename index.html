@@ -31,15 +31,15 @@
         <form>
             <div>
                 <label for="title">Title</label>
-                <input type="text" id="title">
+                <input type="text" id="title" required>
             </div>
             <div>
                 <label for="author">Author</label>
-                <input type="text" id="author">
+                <input type="text" id="author" required>
             </div>
             <div>
                 <label for="pages">Number of pages</label>
-                <input type="number" id="pages">
+                <input type="number" id="pages" required>
             </div>
             <div>
                 <p>Have you read it yet?</p>
@@ -49,7 +49,7 @@
                 <label for="no">No</label>
             </div>
             <button id="close" formmethod="dialog" value="">Cancel</button>
-            <button id="submit" >Submit</button>
+            <button id="submit" formmethod="dialog" value="submit">Submit</button>
         </form>
     </dialog>
     

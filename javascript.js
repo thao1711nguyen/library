@@ -17,7 +17,6 @@ const book2 = new Book("Angels and Demons", "Dan Brown", 375, "read");
 myLibrary.push(book1, book2);
 
 function addBookToLibrary(bookInfo) {
-    bookInfo = bookInfo.split(",")
     const newBook = new Book(...bookInfo)
     myLibrary.push(newBook)
 };
@@ -67,27 +66,23 @@ const bookDialog = document.getElementById("book-info");
 document.getElementById("adding").addEventListener("click", () => {
     bookDialog.showModal();
 });
-document.getElementById("submit").addEventListener("click", (event) => {
-    event.preventDefault();
-    const title = document.getElementById("title");
-    const author = document.getElementById("author");
-    const pages = document.getElementById("pages");
-    const reads = document.getElementsByName("read");
-    let readStatus;
-    for(const choice of reads ) {
-        if (choice.checked) {
-            readStatus = choice.value;
-        }
-    }
-    bookDialog.close([title.value, author.value, pages.value, readStatus]);
-});
+
 
 bookDialog.addEventListener("close", () => {
-    let bookInfo = bookDialog.returnValue
-    if (bookInfo == "") {
+    if (bookDialog.returnValue == "") {
         return; 
     } else {
-        addBookToLibrary(bookInfo)
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const pages = document.getElementById("pages").value;
+        const reads = document.getElementsByName("read");
+        let readStatus;
+        for(const choice of reads ) {
+            if (choice.checked) {
+                readStatus = choice.value;
+            }
+        }
+        addBookToLibrary([title, author, pages, readStatus])
         displayBook()
     }
 });
